@@ -4,8 +4,36 @@
              x:Class="BlankApp1.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="wwwWelcome to Xamarin Forms and Prism!!!!!!!!" />
+    <StackLayout>
+        <Label Text="" />
+
+        <Button Text="add" Command="{Binding AddCommand}" />
+        <Button Text="remove" Command="{Binding RemoveCommand}" />
+        <CollectionView  
+                BackgroundColor="DodgerBlue"
+                ItemsSource="{Binding Items}" 
+                HeightRequest="{Binding DynamicHeight}"
+            >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                        Span="6"
+                        VerticalItemSpacing="0"
+                        HorizontalItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                          <Label 
+                                FontSize="Large"
+                                Text="{Binding .}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
 
 </ContentPage>
